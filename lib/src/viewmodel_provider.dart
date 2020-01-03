@@ -4,7 +4,7 @@ import 'package:viewmodel/src/presenter.dart';
 import 'package:viewmodel/src/viewmodel.dart';
 
 class PresenterAndViewModelProvider<P extends Presenter<VM>, VM extends ViewModel> extends StatelessWidget {
-  final ValueBuilder<P> presenter;
+  final Create<P> presenter;
   final Widget child;
 
   PresenterAndViewModelProvider({
