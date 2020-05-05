@@ -23,18 +23,21 @@ class ViewStateWidget extends StatelessWidget {
 
   WidgetBuilder get _defaultLoadingBuilder => (context) {
         return Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              CircularProgressIndicator(),
-              if (loadingMessage != null) ...[
-                SizedBox(height: 24.0),
-                Text(
-                  loadingMessage,
-                  textAlign: TextAlign.center,
-                ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                CircularProgressIndicator(),
+                if (loadingMessage != null) ...[
+                  SizedBox(height: 8.0),
+                  Text(
+                    loadingMessage,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
         );
       };
@@ -42,22 +45,25 @@ class ViewStateWidget extends StatelessWidget {
   WidgetBuilder get _defaultErrorBuilder => (context) {
         final msg = errorMessage ?? 'An error occured';
         return Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                msg,
-                style: Theme.of(context).textTheme.subhead,
-                textAlign: TextAlign.center,
-              ),
-              if (onReload != null) ...[
-                SizedBox(height: 8.0),
-                RaisedButton(
-                  child: Text('Retry'),
-                  onPressed: onReload,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text(
+                  msg,
+                  style: Theme.of(context).textTheme.subhead,
+                  textAlign: TextAlign.center,
                 ),
+                if (onReload != null) ...[
+                  SizedBox(height: 8.0),
+                  RaisedButton(
+                    child: Text('Retry'),
+                    onPressed: onReload,
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
         );
       };
