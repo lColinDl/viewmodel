@@ -1,9 +1,8 @@
 name: viewmodel
 description: A Flutter package providing ViewModel support.
-version: 0.1.1
-author: Colin Daum <colin.daum@apirious.com>
+version: 0.1.2
+author: Colin Daum <colin.daum@hotmail.de>
 homepage: https://apirious.com/
-publish_to: "http://192.168.42.200/"
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
@@ -12,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  provider: ^4.0.1
+  provider: ">=4.0.0 <5.0.0"
   quiver: ">=1.0.0 <3.0.0"
 
 dev_dependencies:
