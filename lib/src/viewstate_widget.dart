@@ -4,7 +4,7 @@ import 'package:viewmodel/src/viewstate.dart';
 class ViewStateWidget extends StatelessWidget {
   final ViewState viewState;
 
-  final WidgetBuilder body;
+  final WidgetBuilder contentBuilder;
   final WidgetBuilder loadingBuilder;
   final WidgetBuilder errorBuilder;
   final VoidCallback onReload;
@@ -13,13 +13,15 @@ class ViewStateWidget extends StatelessWidget {
 
   ViewStateWidget({
     @required this.viewState,
-    @required this.body,
+    WidgetBuilder contentBuilder,
     this.loadingBuilder,
     this.loadingMessage,
     this.errorBuilder,
     this.errorMessage,
     this.onReload,
-  });
+    @deprecated WidgetBuilder body,
+  })  : this.contentBuilder = contentBuilder ?? body,
+        assert(contentBuilder != null);
 
   WidgetBuilder get _defaultLoadingBuilder => (context) {
         return Center(
@@ -76,7 +78,7 @@ class ViewStateWidget extends StatelessWidget {
       case ViewState.error:
         return errorBuilder?.call(context) ?? _defaultErrorBuilder(context);
       case ViewState.data:
-        return body(context);
+        return contentBuilder(context);
       default:
         throw Exception('Unkown viewState $viewState');
     }
