@@ -3,10 +3,11 @@ import 'package:flutter/foundation.dart';
 abstract class UIEvent {}
 
 class SnackBarEvent implements UIEvent {
-  final String message;
-  SnackBarEvent(this.message);
+  final dynamic data;
+  SnackBarEvent(this.data);
 }
 
+@deprecated
 class AlertDialogEvent implements UIEvent {
   final String title;
   final String content;
@@ -14,6 +15,7 @@ class AlertDialogEvent implements UIEvent {
   AlertDialogEvent(this.title, this.content, [this.actions = const []]);
 }
 
+@deprecated
 class AlertAction {
   final String text;
   final Future Function() action;

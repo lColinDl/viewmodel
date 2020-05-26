@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:viewmodel/src/ui_event.dart';
 
+@deprecated
 class UIEventAlertDialog extends StatelessWidget {
   final AlertDialogEvent event;
 
