@@ -19,14 +19,12 @@ class HomePage extends ViewModelWidget<HomePresenter, HomeViewModel> {
 
   @override
   Widget buildWidget(BuildContext context) {
-    final presenter = Provider.of<HomePresenter>(context);
-    final viewModel = Provider.of<HomeViewModel>(context);
     return Scaffold(
       appBar: AppBar(title: Text("Example")),
       body: Center(
         child: Text(
           viewModel.counter,
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -59,7 +57,9 @@ class HomePresenter extends Presenter<HomeViewModel> {
 
 class HomeViewModel extends ViewModel {
   String _counter = '';
+
   String get counter => _counter;
+
   set counter(String value) {
     if (_counter == value) return;
     _counter = value;

@@ -14,16 +14,17 @@ class ListNotifier<E> extends DelegatingList<E> with ChangeNotifier {
   @override
   List<E> get delegate => _list;
 
-  ListNotifier([List<E> list]) : _list = list ?? [];
+  ListNotifier([List<E>? list]) : _list = list ?? [];
+
 
   @override
-  void sort([int compare(E a, E b)]) {
+  void sort([int compare(E a, E b)?]) {
     super.sort(compare);
     notifyListeners();
   }
 
   @override
-  void shuffle([Random random]) {
+  void shuffle([Random? random]) {
     super.shuffle(random);
     notifyListeners();
   }
@@ -73,7 +74,7 @@ class ListNotifier<E> extends DelegatingList<E> with ChangeNotifier {
   }
 
   @override
-  bool remove(Object value) {
+  bool remove(Object? value) {
     final o = super.remove(value);
     notifyListeners();
     return o;
@@ -92,7 +93,7 @@ class ListNotifier<E> extends DelegatingList<E> with ChangeNotifier {
   }
 
   @override
-  void fillRange(int start, int end, [E fillValue]) {
+  void fillRange(int start, int end, [E? fillValue]) {
     super.fillRange(start, end, fillValue);
     notifyListeners();
   }
